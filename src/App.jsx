@@ -1,24 +1,73 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles.css';
 import { auth, googleAuthProvider } from './firebase';
+import { interpret } from 'xstate/lib/interpreter';
+import { authMachine } from './stateMachine';
 
 class App extends Component {
   state = {
-    user: ''
+    current: authMachine.initialState
   };
+
+  service = interpret(authMachine).onTransition(current =>
+    this.setState({ current })
+  );
+
   componentDidMount() {
-    auth.onAuthStateChanged(user => this.setState({ user }));
+    this.service.start();
+    const { send } = this.service;
+    // this.unsubscribeFromAuth = 
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        send({
+          type: 'SUCCEEDED',
+          payload: {
+            authenticated: true,
+            user
+          }
+        });
+      }
+      send({
+        type: 'FAILED',
+        payload: {
+          authenticated: false,
+          user: ''
+        }
+      });
+    });
   }
+
+  componentWillUnmount() {
+    this.service.stop();
+    // this.unsubscribeFromAuth()
+  }
+
   render() {
+
+    const { current } = this.state;
+    const { send } = this.service;
+
+    console.log('current.value', current.value)
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          {this.state.user ? (
-            <button onClick={() => auth.signOut()}>Logout</button>
+          {current.matches('loggedIn') ? (
+            <button className="pointer" onClick={() => 
+              auth.signOut()
+              .then(() => send({
+              type: 'LOGGEDOUT',
+              payload: {
+                authenticated: false,
+                user: ''
+              }
+            }))}>
+              Logout
+            </button>
           ) : (
-            <button onClick={() => auth.signInWithPopup(googleAuthProvider)}>
+            <button
+              className="pointer"
+              onClick={() => auth.signInWithPopup(googleAuthProvider)}
+            >
               Signup/Login
             </button>
           )}
@@ -29,3 +78,4 @@ class App extends Component {
 }
 
 export default App;
+

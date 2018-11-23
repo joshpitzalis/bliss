@@ -1,46 +1,35 @@
-import React from 'react';
-import { Machine } from 'xstate';
-import { interpret } from 'xstate/lib/interpreter';
+import { Machine,actions } from 'xstate';
+const { assign } = actions;
 
-export 
 
-export const const authMachine = Machine({
-  id: 'auth',
-  initial: 'inactive',
-  states: {
-    inactive: {
-      on: { TOGGLE: 'active' }
-    },
-    active: {
-      on: { TOGGLE: 'inactive' }
-    }
-  }
+const handleSignIn = assign({
+  user: (ctx, event) => event.payload
 });
 
-class Toggle extends Component {
-  state = {
-    current: toggleMachine.initialState
-  };
-
-  service = interpret(toggleMachine)
-    .onTransition(current => this.setState({ current }));
-
-  componentDidMount() {
-    this.service.start();
-  }
-
-  componentWillUnmount() {
-    this.service.stop();
-  }
-
-  render() {
-    const { current } = this.state;
-    const { send }  this.service;
-
-    return (
-      <button onClick={() => send('TOGGLE')}>
-        {current.matches('inactive') ? 'Off' : 'On'}
-      </button>
-    )
-  }
-}
+export const authMachine = Machine({
+  id: 'auth',
+  initial: 'loggedOut',
+  context: {
+    user: ''
+  },
+  states: {
+    loggedOut: {
+      on: { 
+        SUCCEEDED: {
+          target: 'loggedIn',
+          actions: 'handleSignIn'
+        },
+        FAILED: {
+          target: 'loggedOut',
+          actions: 'handleSignIn'
+        }
+      }
+    },
+    loggedIn: {
+      on: { LOGGEDOUT: 'loggedOut' }
+    },
+  },
+},
+{
+  actions:{handleSignIn}
+});
