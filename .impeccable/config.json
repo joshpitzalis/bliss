@@ -1,0 +1,15 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "border-accent-on-rounded",
+        "value": "*",
+        "files": ["src/index.css"],
+        "createdAt": "2026-11-15T07:43:20.583Z",
+        "reason": "build thread + independent finish reviewer: .masthead border-bottom is the 3px ink keyline under the curved band, not a side accent on a card"
+      }
+    ]
+  }
+}

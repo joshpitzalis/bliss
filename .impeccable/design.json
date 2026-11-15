@@ -1,0 +1,356 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-15T07:48:12.051750Z",
+  "title": "Design System: Bliss",
+  "extensions": {
+    "colorMeta": {
+      "teal-ground": {
+        "role": "secondary",
+        "displayName": "Box-Lid Teal",
+        "canonical": "#3cb4b0",
+        "tonalRamp": [
+          "#1b3231",
+          "#20605e",
+          "#2d8683",
+          "#39aca8",
+          "#66ccc9",
+          "#94dbd9",
+          "#c2ebe9",
+          "#ebf4f4"
+        ]
+      },
+      "tomato": {
+        "role": "primary",
+        "displayName": "Tomato Print Red",
+        "canonical": "#d9342b",
+        "tonalRamp": [
+          "#361816",
+          "#6c1813",
+          "#97221b",
+          "#c32b23",
+          "#e05952",
+          "#e98b86",
+          "#f3bdba",
+          "#f6eae9"
+        ]
+      },
+      "mustard": {
+        "role": "tertiary",
+        "displayName": "Mustard Stamp",
+        "canonical": "#f6c15b",
+        "tonalRamp": [
+          "#3b2d12",
+          "#795207",
+          "#a97309",
+          "#da930c",
+          "#f4b63e",
+          "#f8cc78",
+          "#fbe2b2",
+          "#f8f2e7"
+        ]
+      },
+      "butter-cream": {
+        "role": "neutral",
+        "displayName": "Butter-Cream Stock",
+        "canonical": "#f9eab9",
+        "tonalRamp": [
+          "#3a3113",
+          "#755c0a",
+          "#a4810e",
+          "#d3a612",
+          "#efc743",
+          "#f4d87b",
+          "#f9e8b4",
+          "#f7f4e8"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#fffaf0",
+        "tonalRamp": [
+          "#3d2e0f",
+          "#805500",
+          "#b27700",
+          "#e69900",
+          "#ffbb33",
+          "#ffcf70",
+          "#ffe4ad",
+          "#f9f3e7"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Navy Ink",
+        "canonical": "#2b2f45",
+        "tonalRamp": [
+          "#21232c",
+          "#31364f",
+          "#454b6e",
+          "#58608d",
+          "#8189b1",
+          "#a7acc8",
+          "#cdd0e0",
+          "#eeeef2"
+        ]
+      },
+      "teal-dot": {
+        "role": "secondary",
+        "displayName": "Teal Dot",
+        "canonical": "#63cbc7",
+        "tonalRamp": [
+          "#1b3231",
+          "#20605d",
+          "#2d8682",
+          "#39aca8",
+          "#66ccc8",
+          "#94dbd9",
+          "#c2ebe9",
+          "#ebf4f4"
+        ]
+      },
+      "tomato-dot": {
+        "role": "primary",
+        "displayName": "Tomato Dot",
+        "canonical": "#c62c24",
+        "tonalRamp": [
+          "#361816",
+          "#6c1814",
+          "#97221b",
+          "#c22b23",
+          "#e05952",
+          "#e98b86",
+          "#f2bdba",
+          "#f6eae9"
+        ]
+      },
+      "cream-dot": {
+        "role": "neutral",
+        "displayName": "Cream Dot",
+        "canonical": "#f1d68a",
+        "tonalRamp": [
+          "#382f14",
+          "#72580e",
+          "#9f7b13",
+          "#cd9e19",
+          "#e9bf49",
+          "#f0d27f",
+          "#f6e5b6",
+          "#f7f3e8"
+        ]
+      },
+      "card-white": {
+        "role": "neutral",
+        "displayName": "Card White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#595959",
+          "#737373",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f0f0f0"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Wordmark."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Phase heading."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Primary button and panel headings."
+      },
+      "tile": {
+        "displayName": "Tile",
+        "purpose": "Numerals in letter tiles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading text and status line."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Plain button labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ink-lip",
+        "value": "0 4px 0 #2b2f45",
+        "purpose": "Hard lip under every button; collapses to 0 0 0 on press."
+      },
+      {
+        "name": "letter-lip",
+        "value": "0 2px 0 #2b2f45",
+        "purpose": "text-shadow on the wordmark only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Default easing."
+      },
+      {
+        "name": "deal",
+        "value": "0.55s ease-out-expo, 70ms stagger",
+        "purpose": "Cards arrive."
+      },
+      {
+        "name": "flip",
+        "value": "0.5s ease-out-expo",
+        "purpose": "Hand flips face up."
+      },
+      {
+        "name": "stamp",
+        "value": "0.35s ease-out-expo",
+        "purpose": "Stamp lands from 1.9x scale."
+      },
+      {
+        "name": "press",
+        "value": "0.12s ease-out-expo",
+        "purpose": "Button sinks 4px."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "md",
+        "value": "48rem (with fine pointer: wider deck gap and arrow buttons)"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Plain Button",
+      "kind": "button",
+      "refersTo": "button-plain",
+      "description": "Secondary action with the ink lip.",
+      "html": "<button class=\"ds-btn\">Hide</button>",
+      "css": ":host,:root{--ink:#2b2f45}.ds-btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:4px 18px;border:3px solid var(--ink);border-radius:14px;background:#f9eab9;box-shadow:0 4px 0 var(--ink);color:var(--ink);font:700 17px/1.15 Quicksand,ui-rounded,system-ui,sans-serif;cursor:pointer;transition:translate .12s,box-shadow .12s,filter .12s}.ds-btn:hover{filter:brightness(1.06)}.ds-btn:active{box-shadow:0 0 0 var(--ink);translate:0 4px}.ds-btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}"
+    },
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one main action; tomato with Chango label.",
+      "html": "<button class=\"ds-btn ds-btn-primary\">Mark done</button>",
+      "css": ":host,:root{--ink:#2b2f45}.ds-btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:4px 18px;border:3px solid var(--ink);border-radius:14px;background:#f9eab9;box-shadow:0 4px 0 var(--ink);color:var(--ink);font:700 17px/1.15 Quicksand,ui-rounded,system-ui,sans-serif;cursor:pointer;transition:translate .12s,box-shadow .12s,filter .12s}.ds-btn:hover{filter:brightness(1.06)}.ds-btn:active{box-shadow:0 0 0 var(--ink);translate:0 4px}.ds-btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}.ds-btn-primary{background:#d9342b;color:#fffaf0;font:400 20px/1.15 Chango,Arial Rounded MT Bold,sans-serif}"
+    },
+    {
+      "name": "Commit Button",
+      "kind": "button",
+      "refersTo": "button-commit",
+      "description": "Mustard fill. Used once: Start the week, disabled until three missions are kept.",
+      "html": "<button class=\"ds-btn ds-btn-commit\">Start the week</button>",
+      "css": ":host,:root{--ink:#2b2f45}.ds-btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:4px 18px;border:3px solid var(--ink);border-radius:14px;background:#f9eab9;box-shadow:0 4px 0 var(--ink);color:var(--ink);font:700 17px/1.15 Quicksand,ui-rounded,system-ui,sans-serif;cursor:pointer;transition:translate .12s,box-shadow .12s,filter .12s}.ds-btn:hover{filter:brightness(1.06)}.ds-btn:active{box-shadow:0 0 0 var(--ink);translate:0 4px}.ds-btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}.ds-btn-commit{background:#f6c15b}.ds-btn:disabled{opacity:.55;box-shadow:0 0 0 var(--ink);translate:0 4px;cursor:default}"
+    },
+    {
+      "name": "Letter Tiles",
+      "kind": "custom",
+      "refersTo": "letter-tile",
+      "description": "Pager: every number sits in a cream tile.",
+      "html": "<p class=\"ds-pager\"><span class=\"ds-tile\">2</span> of <span class=\"ds-tile\">7</span></p>",
+      "css": ":host,:root{--ink:#2b2f45}.ds-pager{display:flex;align-items:center;gap:6px;margin:0;padding:8px 12px;background:#d9342b;color:#fff;font:700 16px Quicksand,system-ui,sans-serif}.ds-tile{display:inline-grid;place-items:center;min-width:34px;height:38px;padding:0 4px;border:3px solid var(--ink);border-radius:6px;background:#f9eab9;color:#d9342b;font:400 22px/1 Chango,sans-serif}"
+    },
+    {
+      "name": "Masthead",
+      "kind": "nav",
+      "refersTo": "masthead",
+      "description": "Tomato dotted band with wordmark and curved ink-keyed edge.",
+      "html": "<header class=\"ds-mast\"><span class=\"ds-word\">Bliss</span></header>",
+      "css": ":host,:root{--ink:#2b2f45}.ds-mast{display:flex;align-items:center;height:48px;padding:0 16px;background:radial-gradient(circle at 5px 5px,#c62c24 2px,transparent 2.5px) 0 0/10px 10px,#d9342b;border-bottom:3px solid var(--ink);border-radius:0 0 50% 50%/0 0 14px 14px}.ds-word{color:#f9eab9;font:400 28px/1 Chango,sans-serif;text-shadow:0 2px 0 var(--ink)}"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Cream stock card, ink keyline, white picture area.",
+      "html": "<figure class=\"ds-card\"><div class=\"ds-face\"></div></figure>",
+      "css": ":host,:root{--ink:#2b2f45}.ds-card{position:relative;width:120px;height:210px;margin:12px;padding:6px;border:3px solid var(--ink);border-radius:16px;background:radial-gradient(circle at 4px 4px,#f1d68a 1.5px,transparent 2px) 0 0/8px 8px,#f9eab9;box-sizing:border-box}.ds-face{width:100%;height:100%;border-radius:8px;background:#fff}"
+    },
+    {
+      "name": "Kept Card with Stamp",
+      "kind": "card",
+      "refersTo": "card-kept",
+      "description": "Kept state: mustard stock and a rotated stamp.",
+      "html": "<figure class=\"ds-card\"><div class=\"ds-face\"></div><span class=\"ds-stamp\">Kept</span></figure>",
+      "css": ":host,:root{--ink:#2b2f45}.ds-card{position:relative;width:120px;height:210px;margin:12px;padding:6px;border:3px solid var(--ink);border-radius:16px;background:#f6c15b;box-sizing:border-box}.ds-face{width:100%;height:100%;border-radius:8px;background:#fff}.ds-stamp{position:absolute;top:-10px;right:-8px;rotate:6deg;padding:6px 10px;border:3px solid var(--ink);border-radius:8px;background:#f6c15b;color:var(--ink);font:400 16px/1 Chango,sans-serif}"
+    },
+    {
+      "name": "Face-down Card",
+      "kind": "card",
+      "refersTo": "card-back",
+      "description": "Tomato dotted back with two fanned cards behind.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-back\"><span class=\"ds-word\">Bliss</span><span class=\"ds-pill\">Top secret</span></div></div>",
+      "css": ":host,:root{--ink:#2b2f45}.ds-card{position:relative;width:120px;height:210px;margin:16px;padding:6px;border:3px solid var(--ink);border-radius:16px;background:#f9eab9;box-sizing:border-box}.ds-card::before,.ds-card::after{content:'';position:absolute;inset:-3px;z-index:-1;border:3px solid var(--ink);border-radius:16px;background:#f9eab9;rotate:-4deg}.ds-card::after{rotate:3deg}.ds-back{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;height:100%;border:2px solid var(--ink);border-radius:8px;background:radial-gradient(circle at 5px 5px,#c62c24 2px,transparent 2.5px) 0 0/10px 10px,#d9342b}.ds-word{rotate:-6deg;color:#f9eab9;font:400 30px/1 Chango,sans-serif;text-shadow:0 2px 0 var(--ink)}.ds-pill{padding:4px 12px;border-radius:9999px;background:#f9eab9;color:var(--ink);font:700 14px Quicksand,sans-serif}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Box Lid",
+    "overview": "Bliss looks like it came out of the Marital Bliss box: a printed teal ground of halftone dots, a tomato band across the top, butter-cream card stock, and navy ink drawn around everything. It is flat print, not a table and not a dark card app. The old green-felt look is replaced, not extended.",
+    "keyCharacteristics": [
+      "Halftone dots are the only texture",
+      "Every shape is outlined in ink, 3px on the outside",
+      "Depth is a hard ink lip under pressable things; no soft shadows",
+      "Chango for voice and numbers, Quicksand for everything you read",
+      "Kept and Done arrive as rotated mustard stamps"
+    ],
+    "rules": [
+      {
+        "name": "The Ink Rule",
+        "body": "All outlines, shadows and text are navy ink (#2b2f45). Never black, never grey, never a tinted shadow.",
+        "section": "colors"
+      },
+      {
+        "name": "The Dot Rule",
+        "body": "A large flat area of teal, tomato or cream is dotted, never plain. Small things (tiles, buttons, stamps) stay flat.",
+        "section": "colors"
+      },
+      {
+        "name": "The State Is Mustard Rule",
+        "body": "Mustard marks a decision (kept, reward, done, commit). Do not spend it on decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tile Rule",
+        "body": "Every number that matters (pager, days/hours/minutes) is a letter tile, with its unit as plain bold text beside it. Do not set a number loose in running text.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Shouter Rule",
+        "body": "Chango is for names, headings, numerals and the primary action. Running sentences are Quicksand.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lip Rule",
+        "body": "The only shadow is a hard, zero-blur, straight-down ink lip, and only on things that can be pressed (plus the wordmark). Cards, stamps and tiles carry keylines, not shadows.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do outline every object in 3px navy ink (#2b2f45) and use no other line colour.",
+      "Do put every number in a cream letter tile with a tomato Chango numeral.",
+      "Do keep large flat fills dotted (teal ground, tomato band and card back, cream card stock), each with its own dot colour.",
+      "Do give every pressable thing the 4px hard ink lip and let it sink when pressed.",
+      "Do use mustard only for a decided state: kept, reward, done, commit.",
+      "Do keep card images at full strength; state is carried by a stamp, never by fading the ink.",
+      "Do honour reduced motion (animations and transitions collapse to near zero) and keep a 56px minimum height for thumb targets."
+    ],
+    "donts": [
+      "Don't return to the green-felt, casino-table look or to a dark card app; the ground is teal print.",
+      "Don't use soft, blurred or tinted shadows; the only shadow is the zero-blur ink lip.",
+      "Don't set numbers as plain text in running copy.",
+      "Don't use black or grey; all ink is navy.",
+      "Don't set Chango for sentences; it is for names, headings, numerals and the primary action.",
+      "Don't put tomato on more than one band, one primary button and one card back at a time."
+    ]
+  }
+}
