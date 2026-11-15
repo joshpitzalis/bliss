@@ -1,44 +1,350 @@
 @import "tailwindcss";
 
 @theme {
-  --color-felt: darkgreen;
-  --color-panel: #fefefe;
-  --color-placeholder: #eee;
-  --color-line: #999;
-  --color-danger: #991b1b;
-  --animate-fade-in: fade-in 0.5s ease-out both;
-  --animate-slide-up: slide-up 0.3s backwards;
-  --animate-slide-up-1: slide-up 0.3s 0.1s backwards;
-  --animate-slide-up-2: slide-up 0.3s 0.2s backwards;
-  --animate-slide-up-3: slide-up 0.3s 0.3s backwards;
-  --animate-slide-up-4: slide-up 0.3s 0.4s backwards;
+  --color-teal: #3cb4b0;
+  --color-teal-dot: #63cbc7;
+  --color-tomato: #d9342b;
+  --color-tomato-dot: #c62c24;
+  --color-cream: #f9eab9;
+  --color-cream-dot: #f1d68a;
+  --color-paper: #fffaf0;
+  --color-mustard: #f6c15b;
+  --color-ink: #2b2f45;
 
-  @keyframes fade-in {
+  --font-display: "Chango", "Arial Rounded MT Bold", sans-serif;
+  --font-sans: "Quicksand", ui-rounded, system-ui, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-deal: deal 0.55s var(--ease-out-expo) backwards;
+  --animate-flip: flip 0.5s var(--ease-out-expo) backwards;
+  --animate-stamp: stamp 0.35s var(--ease-out-expo) backwards;
+
+  @keyframes deal {
     from {
       opacity: 0;
+      transform: translate(45%, 5%) rotate(9deg);
     }
   }
 
-  @keyframes slide-up {
+  @keyframes flip {
+    from {
+      transform: perspective(60rem) rotateY(-90deg);
+    }
+  }
+
+  @keyframes centre-stage {
+    0%,
+    100% {
+      opacity: 0.6;
+      scale: 0.94;
+    }
+
+    50% {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+
+  @keyframes stamp {
     from {
       opacity: 0;
-      transform: scale(0.8) translateY(20%);
+      scale: 1.9;
     }
   }
 }
 
-/* Tailwind v4 preflight resets buttons to cursor: default. Restore pointer. */
+:root {
+  /* Card height is what is left of the screen after the masthead, title row,
+     status line and action bar, capped by the phone's width. The floor keeps
+     card text readable on short screens; the page scrolls instead. */
+  --card-h: min(
+    max(
+      26rem,
+      100dvh - 13.5rem - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+    ),
+    82vw * 1.75,
+    39rem
+  );
+  --card-w: calc(var(--card-h) * 4 / 7);
+  --dots-teal:
+    radial-gradient(
+        circle at 6px 6px,
+        var(--color-teal-dot) 2.4px,
+        transparent 2.9px
+      )
+      0 0 / 12px 12px,
+    var(--color-teal);
+  --dots-cream:
+    radial-gradient(
+        circle at 4px 4px,
+        var(--color-cream-dot) 1.5px,
+        transparent 2px
+      )
+      0 0 / 8px 8px,
+    var(--color-cream);
+  --dots-tomato:
+    radial-gradient(
+        circle at 5px 5px,
+        var(--color-tomato-dot) 2px,
+        transparent 2.5px
+      )
+      0 0 / 10px 10px,
+    var(--color-tomato);
+}
+
 @layer base {
-  button:not(:disabled),
-  [role="button"]:not(:disabled) {
-    cursor: pointer;
+  html {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    color-scheme: light;
   }
 
   body {
-    background-color: var(--color-felt);
-    background-image: radial-gradient(transparent, rgb(0 0 0 / 0.9));
-    background-size: 200vw 200vh;
-    background-position: -45vw -20vh;
-    background-blend-mode: multiply;
+    background: var(--dots-teal);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    touch-action: manipulation;
+  }
+
+  /* Tailwind v4 preflight resets buttons to cursor: default. Restore pointer. */
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--color-mustard);
+    color: var(--color-ink);
+  }
+}
+
+@layer components {
+  .masthead {
+    background: var(--dots-tomato);
+    border-bottom: 3px solid var(--color-ink);
+    border-radius: 0 0 50% 50% / 0 0 0.875rem 0.875rem;
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .masthead :focus-visible {
+    outline-color: var(--color-paper);
+  }
+
+  .wordmark {
+    color: var(--color-cream);
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    line-height: 1;
+    text-shadow: 0 2px 0 var(--color-ink);
+  }
+
+  .tile {
+    display: inline-grid;
+    place-items: center;
+    min-width: 2.125rem;
+    height: 2.375rem;
+    padding-inline: 0.25rem;
+    border: 3px solid var(--color-ink);
+    border-radius: 0.375rem;
+    background: var(--color-cream);
+    color: var(--color-tomato);
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    line-height: 1;
+  }
+
+  .deck {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding: 0.875rem calc(50% - var(--card-w) / 2) 0.75rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .deck > li {
+    flex: none;
+    isolation: isolate;
+    scroll-snap-align: center;
+  }
+
+  /* With a mouse, leave room between cards for the arrow buttons. */
+  @media (width >= 48rem) and (pointer: fine) {
+    .deck {
+      gap: 6rem;
+    }
+  }
+
+  /* The card in the middle is the one the action bar acts on. */
+  @supports (animation-timeline: view()) {
+    .deck > li {
+      animation: centre-stage linear both;
+      animation-timeline: view(inline);
+    }
+  }
+
+  /* Cards arrive one after another. */
+  .deck > li:nth-child(2) > .card {
+    animation-delay: 70ms;
+  }
+  .deck > li:nth-child(3) > .card {
+    animation-delay: 140ms;
+  }
+  .deck > li:nth-child(4) > .card {
+    animation-delay: 210ms;
+  }
+  .deck > li:nth-child(5) > .card {
+    animation-delay: 280ms;
+  }
+  .deck > li:nth-child(6) > .card {
+    animation-delay: 350ms;
+  }
+  .deck > li:nth-child(7) > .card {
+    animation-delay: 420ms;
+  }
+  .deck > li:nth-child(n + 8) > .card {
+    animation-delay: 490ms;
+  }
+
+  .bar {
+    background: var(--dots-teal);
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+  }
+
+  .card {
+    position: relative;
+    width: var(--card-w);
+    height: var(--card-h);
+    padding: 0.375rem;
+    border: 3px solid var(--color-ink);
+    border-radius: 1rem;
+    background: var(--dots-cream);
+  }
+
+  .card[data-state="kept"] {
+    background: var(--color-mustard);
+  }
+
+  .card-face {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+    background: white;
+    object-fit: cover;
+  }
+
+  /* The stamp says "done". Only soften the ink a touch: the card must stay
+     as readable as any other. */
+  .card[data-state="done"] .card-face {
+    filter: contrast(0.8) brightness(1.1);
+  }
+
+  .card-back {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--color-ink);
+    border-radius: 0.5rem;
+    background: var(--dots-tomato);
+  }
+
+  /* Two more cards showing under a face-down one. */
+  .card[data-stack]::before,
+  .card[data-stack]::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    z-index: -1;
+    border: 3px solid var(--color-ink);
+    border-radius: 1rem;
+    background: var(--dots-cream);
+    rotate: -4deg;
+  }
+
+  .card[data-stack]::after {
+    rotate: 3deg;
+  }
+
+  .stamp {
+    position: absolute;
+    border: 3px solid var(--color-ink);
+    border-radius: 0.5rem;
+    background: var(--color-mustard);
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    line-height: 1;
+    animation: var(--animate-stamp);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3.5rem;
+    padding: 0.25rem 1.125rem;
+    border: 3px solid var(--color-ink);
+    border-radius: 0.875rem;
+    background: var(--color-cream);
+    box-shadow: 0 4px 0 var(--color-ink);
+    color: var(--color-ink);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    line-height: 1.15;
+    transition:
+      translate 0.12s var(--ease-out-expo),
+      box-shadow 0.12s var(--ease-out-expo),
+      filter 0.12s;
+  }
+
+  .btn[data-tone="primary"] {
+    background: var(--color-tomato);
+    color: var(--color-paper);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+
+  .btn[data-tone="commit"] {
+    background: var(--color-mustard);
+  }
+
+  .btn:active:not(:disabled),
+  .btn:disabled {
+    box-shadow: 0 0 0 var(--color-ink);
+    translate: 0 4px;
+  }
+
+  .btn:disabled {
+    opacity: 0.55;
+  }
+
+  @media (hover: hover) {
+    .btn:hover:not(:disabled) {
+      filter: brightness(1.06);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

@@ -1,14 +1,23 @@
-import { Effect } from "effect";
+import { Effect, Schema } from "effect";
 import { createAsyncLogic } from "xstate";
 
 import type { Card } from "../lib/schema";
-// import { drawHand } from "./draw-hand";
-// import { drawMission } from "./draw-mission";
+import { drawMission } from "./draw-mission";
 import { drawReward } from "./draw-reward";
 
+export const DrawKindSchema = Schema.Literals(["reward", "mission"]);
+
+export type DrawKind = typeof DrawKindSchema.Type;
+
+const drawForKind = {
+  mission: drawMission,
+  reward: drawReward,
+} as const;
+
 export const loadCards = createAsyncLogic({
-  run: ({ signal }): Promise<readonly Card[]> =>
-    // Effect.runPromise(drawMission, { signal }),
-    Effect.runPromise(drawReward, { signal }),
-  // Effect.runPromise(drawHand, { signal }),
+  run: ({ input, signal }): Promise<readonly Card[]> =>
+    Effect.runPromise(drawForKind[input], { signal }),
+  schemas: {
+    input: Schema.toStandardSchemaV1(DrawKindSchema),
+  },
 });
